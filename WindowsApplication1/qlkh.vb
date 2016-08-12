@@ -11,12 +11,12 @@ Public Class qlkh
         ElseIf txtdt.Text = "" Then
             MessageBox.Show("Số điện thoại không được để trống")
         Else
-            Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+            Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
             Dim reader As MySqlDataReader
             Try
                 connec.Open()
                 Dim Query As String
-                Query = "insert into assignment.khachhang (ma_kh,ten_kh,diachi_kh,sdt_kh) values ('" & txtMa.Text & "','" & txtTen.Text & "','" & txtDia.Text & "','" & txtdt.Text & "')"
+                Query = "insert into sql6131126.khachhang (ma_kh,ten_kh,diachi_kh,sdt_kh) values ('" & txtMa.Text & "','" & txtTen.Text & "','" & txtDia.Text & "','" & txtdt.Text & "')"
                 Dim command As New MySqlCommand(Query, connec)
                 reader = command.ExecuteReader
                 MessageBox.Show("Thêm thành công")
@@ -49,14 +49,14 @@ Public Class qlkh
     End Sub
 
     Private Sub load_Table()
-        Dim connec As New MySqlConnection("server =127.0.0.1;user=u317865668_ass;password=abc123;database=u317865668_ass")
+        Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSoure As New BindingSource
         Try
             connec.Open()
             Dim Query As String
-            Query = "select * from u317865668_ass.khachhang"
+            Query = "select * from sql6131126.khachhang"
             Dim command As New MySqlCommand(Query, connec)
             SDA.SelectCommand = command
             SDA.Fill(dbDataSet)
@@ -87,12 +87,12 @@ Public Class qlkh
         ElseIf txtdt.Text = "" Then
             MessageBox.Show("Số điện thoại không được để trống")
         Else
-            Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+            Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
             Dim reader As MySqlDataReader
             Try
                 connec.Open()
                 Dim Query As String
-                Query = "update assignment.khachhang set ten_kh='" & txtTen.Text & "',diachi_kh='" & txtDia.Text & "',sdt_kh='" & txtdt.Text & "' where ma_kh='" & txtMa.Text & "'"
+                Query = "update sql6131126.khachhang set ten_kh='" & txtTen.Text & "',diachi_kh='" & txtDia.Text & "',sdt_kh='" & txtdt.Text & "' where ma_kh='" & txtMa.Text & "'"
                 Dim command As New MySqlCommand(Query, connec)
                 reader = command.ExecuteReader
                 MessageBox.Show("Update thành công")
@@ -100,8 +100,6 @@ Public Class qlkh
                 txtTen.Clear()
                 txtDia.Clear()
                 txtdt.Clear()
-
-
                 connec.Close()
             Catch ex As Exception
                 MessageBox.Show(ex.Message)
@@ -109,14 +107,13 @@ Public Class qlkh
             load_Table()
         End If
     End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+        Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
         Dim reader As MySqlDataReader
         Try
             connec.Open()
             Dim Query As String
-            Query = "delete from assignment.khachhang where ma_kh='" & txtMa.Text & "'"
+            Query = "delete from sql6131126.khachhang where ma_kh='" & txtMa.Text & "'"
             Dim command As New MySqlCommand(Query, connec)
             reader = command.ExecuteReader
             MessageBox.Show("Delete thành công")
@@ -124,17 +121,14 @@ Public Class qlkh
             txtTen.Clear()
             txtDia.Clear()
             txtdt.Clear()
-
             connec.Close()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
         load_Table()
     End Sub
-
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         MenuQL.Show()
         Me.Hide()
-
     End Sub
 End Class
