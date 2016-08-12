@@ -55,7 +55,7 @@ Public Class qlsp
         ElseIf ComboBox1.Text = "" Then
             MessageBox.Show("Mã loại không được để trống")
         Else
-            Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+            Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
             Dim reader As MySqlDataReader
             Dim Command As New MySqlCommand
 
@@ -63,7 +63,7 @@ Public Class qlsp
                 connec.Open()
                 Dim Query As String
                 ' Dim sqlquery As String = String.Format("Select ma_sp as 'Mã Sản Phẩm',ten_sp as 'Tên Sản Phẩm',gia_sp as'Giá Sản Phẩm',mota_sp as'Mô Tả',ma_loai as 'Mã Loại',hinhanh as 'Hình Ảnh'")
-                Query = "insert into assignment.sanpham (ma_sp,ten_sp,gia_sp,mota_sp,ma_loai,hinhanh) values ('" & txtMa_sp.Text & "','" & txtTen_sp.Text & "','" & txtGia.Text & "','" & txtMota.Text & "','" & ComboBox1.Text & "','" & txtHinh.Text & "')"
+                Query = "insert into sql6131126.sanpham (ma_sp,ten_sp,gia_sp,mota_sp,ma_loai,hinhanh) values ('" & txtMa_sp.Text & "','" & txtTen_sp.Text & "','" & txtGia.Text & "','" & txtMota.Text & "','" & ComboBox1.Text & "','" & txtHinh.Text & "')"
                 Command.Connection = connec
                 Command.CommandType = CommandType.Text
                 Command.CommandText = Query
@@ -88,12 +88,12 @@ Public Class qlsp
 
     Private Sub Frm_load(sender As Object, e As EventArgs) Handles MyBase.Load
         load_Table()
-        Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+        Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
         Dim reader As MySqlDataReader
         Try
             connec.Open()
             Dim Query As String
-            Query = "SELECT ma_loai FROM assignment.theloai"
+            Query = "SELECT ma_loai FROM sql6131126.theloai"
             Dim command As New MySqlCommand(Query, connec)
             reader = command.ExecuteReader
             While reader.Read
@@ -113,14 +113,14 @@ Public Class qlsp
 
 
     Private Sub load_Table()
-        Dim MySQLConnection As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+        Dim MySQLConnection As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSoure As New BindingSource
         Try
             MySQLConnection.Open()
             Dim Query As String
-            Query = "select * from assignment.sanpham"
+            Query = "select * from sql6131126.sanpham"
             Dim command As New MySqlCommand(Query, MySQLConnection)
             SDA.SelectCommand = command
             SDA.Fill(dbDataSet)
@@ -134,12 +134,12 @@ Public Class qlsp
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+        Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
         Dim reader As MySqlDataReader
         Try
             connec.Open()
             Dim Query As String
-            Query = "delete from assignment.sanpham where ma_sp='" & txtMa_sp.Text & "'"
+            Query = "delete from sql6131126.sanpham where ma_sp='" & txtMa_sp.Text & "'"
             Dim command As New MySqlCommand(Query, connec)
             reader = command.ExecuteReader
             MessageBox.Show("Delete thành công")
@@ -171,12 +171,12 @@ Public Class qlsp
         ElseIf ComboBox1.Text = "" Then
             MessageBox.Show("Mã nhà SX không được để trống")
         Else
-            Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+            Dim connec As New MySqlConnection("server =sql6.freesqldatabase.com;user=sql6131126;password=jyx9FJj7pM;database=sql6131126")
             Dim reader As MySqlDataReader
             Try
                 connec.Open()
                 Dim Query As String
-                Query = "update assignment.sanpham set mota_sp='" & txtMota.Text & "',ma_loai='" & ComboBox1.Text & "',ten_sp='" & txtTen_sp.Text & "',gia_sp='" & txtGia.Text & "' where ma_sp='" & txtMa_sp.Text & "'"
+                Query = "update sql6131126.sanpham set mota_sp='" & txtMota.Text & "',ma_loai='" & ComboBox1.Text & "',ten_sp='" & txtTen_sp.Text & "',gia_sp='" & txtGia.Text & "' where ma_sp='" & txtMa_sp.Text & "'"
                 Dim command As New MySqlCommand(Query, connec)
                 reader = command.ExecuteReader
                 MessageBox.Show("Update thành công")

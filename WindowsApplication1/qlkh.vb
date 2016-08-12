@@ -49,14 +49,14 @@ Public Class qlkh
     End Sub
 
     Private Sub load_Table()
-        Dim connec As New MySqlConnection("host=127.0.0.1;username=root;password='';database=assignment")
+        Dim connec As New MySqlConnection("server =127.0.0.1;user=u317865668_ass;password=abc123;database=u317865668_ass")
         Dim SDA As New MySqlDataAdapter
         Dim dbDataSet As New DataTable
         Dim bSoure As New BindingSource
         Try
             connec.Open()
             Dim Query As String
-            Query = "select * from assignment.khachhang"
+            Query = "select * from u317865668_ass.khachhang"
             Dim command As New MySqlCommand(Query, connec)
             SDA.SelectCommand = command
             SDA.Fill(dbDataSet)
